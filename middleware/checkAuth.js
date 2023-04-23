@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const envVars = require('../config/envVars');
 
 const checkAuth = async (req, res, next) => {
-  console.log('from checkauth');
   const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
   if (!token) {
     return res.status(401).json({ message: 'auth failed' });
