@@ -16,7 +16,7 @@ const checkAuth = async (req, res, next) => {
     req.userData = decoded;
     next();
   } catch (error) {
-    await models.UserLogger.remove({ token });
+    await models.UserLogger.findOneAndRemove({ token });
     return res.status(401).json({ message: 'auth failed' });
   }
 };
